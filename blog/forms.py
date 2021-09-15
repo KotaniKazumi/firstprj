@@ -1,5 +1,5 @@
 from django import forms
-from django.core.mail import EmailMessage
+from django.core.mail import EmailMessage,send_mail
 
 class ContactForm(forms.Form):
 	name = forms.CharField(label='お名前')
@@ -27,9 +27,8 @@ class ContactForm(forms.Form):
 		messsage = '送信者名: {0}\nメールアドレス: {1}\n タイトル:{2}\n メッセージ: {3}'.format(name, email, title, message)
 		from_email = 'ksys@kkotani.net'
 		to_list = [email,from_email]
-		message = EmailMessage(subject=subject,
-								body=message,
-								from_email=from_email,
-								to=to_list,
-								)
-		message.send()
+		send_mail(subject,
+				  message,
+				  from_email,
+				  to_list,
+					)
