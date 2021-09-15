@@ -11,6 +11,7 @@ https://docs.djangoproject.com/en/3.2/ref/settings/
 """
 
 from pathlib import Path
+from django.contrib.messages import constants
 
 # Build paths inside the project like this: BASE_DIR / 'subdir'.
 BASE_DIR = Path(__file__).resolve().parent.parent
@@ -124,3 +125,15 @@ STATIC_URL = '/static/'
 # https://docs.djangoproject.com/en/3.2/ref/settings/#default-auto-field
 
 DEFAULT_AUTO_FIELD = 'django.db.models.BigAutoField'
+
+MESAGE_TAGS = { constants.SUCCESS: 'alert alert-success'}
+
+#EMAIL_BACKEND = 'django.core.mail.backends.console.EmailBackend'
+EMAIL_BACKEND = 'django.core.mail.backends.smtp.EmailBackend'
+
+DEFAULT_FROM_EMAIL = 'ksys@kkotani.net'
+EMAIL_HOST = 'kkotani.net'
+EMAIL_HOST_USER = 'ksys@kkotani.net'
+EMAIL_HOST_PASSWORD = 'kotani0721'
+EMAIL_PORT = 587
+EMAIL_USE_TLS = False
